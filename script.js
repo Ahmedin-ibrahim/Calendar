@@ -2,16 +2,18 @@ var currentdate = new Date();
 var month = currentdate.getMonth();
 var year = currentdate.getFullYear();
 var date = currentdate.getDate();
-var currentDay = currentdate.getDay();
+
+showCurrentDate();
 
 function showCurrentDate() {
     var monthNames = ["January", "February", "March", "April", "May", "June",
          "July", "August", "September", "October", "November", "December"];
     var currentDate = monthNames[month] + " " + date + ", " + year;
     document.getElementById("MyCurrentDateDisplay").innerHTML = currentDate;
+    document.getElementById("MyCurrentWeekdayDisplay").innerHTML = "Today is: " + currentdate.toLocaleString('en-US', { weekday: 'long' });
 }
 
-function showCalendar() {
+    function showCalendar() {
     var firstDay = new Date(year, month, 1).getDay();
     var daysInMonth = new Date(year, month + 1, 0).getDate();
     var monthNames = ["January", "February", "March", "April", "May", "June",
