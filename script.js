@@ -2,6 +2,14 @@ var currentdate = new Date();
 var month = currentdate.getMonth();
 var year = currentdate.getFullYear();
 var date = currentdate.getDate();
+var currentDay = currentdate.getDay();
+
+function showCurrentDate() {
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+         "July", "August", "September", "October", "November", "December"];
+    var currentDate = monthNames[month] + " " + date + ", " + year;
+    document.getElementById("MyCurrentDateDisplay").innerHTML = currentDate;
+}
 
 function showCalendar() {
     var firstDay = new Date(year, month, 1).getDay();
@@ -59,3 +67,26 @@ function nextMonth() {
 }
 
 showCalendar();
+
+function showTime() {
+    var date = new Date();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var session = "AM";
+
+    if (h > 12) {
+        h = h - 12;
+        session = "PM";
+    }
+
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("MyClockDisplay").innerText = time;
+    setTimeout(showTime, 1000);
+}
+
+showTime();
